@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Обчислення периметру та площі трикутника</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<h1>Обчислення периметру та площі трикутника</h1>
+	<form>
+		<label for="side1">Довжина сторони 1:</label>
+		<input type="number" id="side1" name="side1" required><br><br>
+		
+		<label for="side2">Довжина сторони 2:</label>
+		<input type="number" id="side2" name="side2" required><br><br>
+		
+		<label for="side3">Довжина сторони 3:</label>
+		<input type="number" id="side3" name="side3" required><br><br>
+		
+		<button type="button" onclick="calculate()">Обчислити</button><br><br>
+		
+		<label for="perimeter">Периметр трикутника:</label>
+		<input type="number" id="perimeter" name="perimeter" readonly><br><br>
+		
+		<label for="area">Площа трикутника:</label>
+		<input type="number" id="area" name="area" readonly>
+	</form>
+	
+	<script>
+		function calculate() {
+			// отримуємо значення довжин сторін трикутника з форми
+			let a = parseFloat(document.getElementById("side1").value);
+			let b = parseFloat(document.getElementById("side2").value);
+			let c = parseFloat(document.getElementById("side3").value);
+			
+			// обчислюємо периметр трикутника
+			let perimeter = a + b + c;
+			
+			// обчислюємо півпериметр трикутника
+			let s = perimeter / 2;
+			
+			// обчислюємо площу трикутника за формулою Герона
+			let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+			
+			// встановлюємо значення полів результатів в формі
+			document.getElementById("perimeter").value = perimeter;
+			document.getElementById("area").value = area;
+		}
+	</script>
+</body>
+</html>
